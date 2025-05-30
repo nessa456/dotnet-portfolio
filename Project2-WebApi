@@ -1,0 +1,29 @@
+# 🌦️ Weather Forecast API – .NET 7 Web API
+
+## 🎯 Цел
+Това е примерен .NET Web API проект, който връща фалшиви прогнози за времето – полезен за тестване на REST услуги и работа с контролери.
+
+## 🛠️ Технологии
+- .NET 7
+- ASP.NET Core Web API
+
+## 📦 Зависимости
+- Microsoft.AspNetCore.Mvc
+
+## 🚀 Стартиране
+
+```bash
+cd Project2-WebApi
+dotnet run
+
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
