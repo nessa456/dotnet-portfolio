@@ -1,0 +1,67 @@
+# 🧭 Project3 – Blazor WebAssembly App (.NET 7)
+
+## 🎯 Цел
+Това е SPA приложение, създадено с Blazor WebAssembly. Демонстрира компоненти, навигация и динамично съдържание с C# код в браузъра.
+
+## 🛠️ Технологии
+- .NET 7
+- Blazor WebAssembly
+- C#
+
+## 🚀 Стартиране
+
+```bash
+cd Project3-BlazorApp
+dotnet run## 🔧 `Project3-BlazorApp.csproj`
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+  </ItemGroup>
+</Project>using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Project3_BlazorApp;
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+
+await builder.Build().RunAsync();
+@page "/"
+
+<h1>Добре дошли в моето Blazor приложение!</h1>
+<p>Това е стартова страница.</p>
+@page "/counter"
+
+<h1>Брояч</h1>
+
+<p>Текуща стойност: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Добави +1</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+@inherits LayoutComponentBase
+
+<div class="main-layout">
+    <nav>
+        <a href="/">Начало</a> |
+        <a href="/counter">Брояч</a>
+    </nav>
+
+    <div class="content">
+        @Body
+    </div>
+</div>
