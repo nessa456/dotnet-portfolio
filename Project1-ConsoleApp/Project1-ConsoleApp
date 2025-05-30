@@ -1,3 +1,38 @@
+
+---
+
+## 📝 Пример: `Project1-ConsoleApp/Program.cs`
+
+Ако създаваш C# файл, например `Project1-ConsoleApp/Program.cs`, в полето **File content here** трябва да поставиш C# кода:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Въведете първо число: ");
+        double a = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Въведете оператор (+, -, *, /): ");
+        string op = Console.ReadLine();
+
+        Console.Write("Въведете второ число: ");
+        double b = Convert.ToDouble(Console.ReadLine());
+
+        double result = op switch
+        {
+            "+" => a + b,
+            "-" => a - b,
+            "*" => a * b,
+            "/" => b != 0 ? a / b : throw new DivideByZeroException(),
+            _ => throw new InvalidOperationException("Невалиден оператор")
+        };
+
+        Console.WriteLine($"Резултат: {result}");
+    }
+}
 # 🧮 Math Console App – .NET 7
 
 ## 🎯 Цел
